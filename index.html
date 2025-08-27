@@ -44,6 +44,22 @@
             line-height: 1.7;
             scroll-behavior: smooth;
         }
+        body {
+            position: relative;
+        }
+
+        body::before {
+            content: "Site protótipo para Designplan feito por Lucas Lira";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 40px;
+            color: rgba(255, 1, 1, 0.534);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+        }
 
         .container {
             max-width: 1200px;
@@ -842,5 +858,6 @@
         window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; };
     </script>
 </body>
+
 
 </html>
