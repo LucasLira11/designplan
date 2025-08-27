@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designplan - Planejamento e Soluções</title>
+    <!-- Font Inter do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS para o carrossel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --color-bg: #f9fafb;
+            --color-primary: #0a192f;
+            /* Azul petróleo escuro */
+            --color-secondary: #1e293b;
+            /* Cinza azulado */
+            --color-accent: #f97316;
+            /* Laranja do logo */
+            --color-accent-dark: #ea580c;
+            /* Laranja mais forte */
+            --color-text: #334155;
+            /* Cinza escuro para textos */
+            --color-light: #ffffff;
+            --color-border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--color-light);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--color-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Hero */
+        /* ---- HERO SECTION ---- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+
+            /* Imagem de fundo */
+            background: url("fundo.png") no-repeat center center/cover;
+        }
+
+        /* Overlay azul escuro degradê */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(5, 20, 50, 0.85), rgba(5, 20, 50, 0.85));
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            animation: fadeUp 1.5s ease forwards;
+        }
+
+        /* Título */
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        /* Subtítulo */
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Botão CTA */
+        .hero .btn {
+            background: #ff6600;
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 102, 0, 0.4);
+        }
+
+        .hero .btn:hover {
+            background: #e65500;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 102, 0, 0.6);
+        }
+
+        /* Animação de entrada */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .btn {
+            background: var(--color-accent);
+            color: var(--color-light);
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--color-accent-dark);
+        }
+
+        /* Section */
+        section {
+            padding: 6rem 0 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.4rem);
+            margin-bottom: 2rem;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .section-title2 {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.4rem);
+            margin-bottom: 2rem;
+            color: white;
+            font-weight: 700;
+        }
+
+        /* About */
+        #about {
+            background: var(--color-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Benefits */
+        #benefits {
+            background-color: var(--color-secondary);
+            color: var(--color-light);
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-item {
+            background-color: var(--color-primary);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .benefit-item i {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        /* Services */
+        #services {
+            background: var(--color-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--color-light);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card .btn {
+            margin-top: 1rem;
+        }
+
+        /* Contact */
+        #contact {
+            background: linear-gradient(to right, #1e293b, #0a192f);
+            color: var(--color-light);
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3,
+        .contact-form h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .contact-info i {
+            color: var(--color-accent);
+            margin-right: 10px;
+        }
+
+        .contact-info a {
+            color: var(--color-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--color-accent);
+        }
+
+        .social-media {
+            margin-top: 1.5rem;
+        }
+
+        .social-media a {
+            color: var(--color-light);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: var(--color-accent);
+        }
+
+        .logo {
+            width: 250px;
+            border-radius: 7px;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem;
+            margin-top: 0.5rem;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            background-color: var(--color-light);
+            color: var(--color-primary);
+            width: 100%;
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+        }
+
+        .contact-form button.btn {
+            margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-primary);
+            text-align: center;
+            padding: 1rem 0;
+            color: var(--color-light);
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        /* ---- Carrossel 3D ---- */
+        .mySwiper {
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        .swiper-slide {
+            transform: scale(0.85);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            opacity: 0.6;
+        }
+
+        .swiper-slide-active {
+            transform: scale(1) rotateY(0deg);
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .swiper-slide-next,
+        .swiper-slide-prev {
+            transform: scale(0.9) rotateY(15deg);
+            opacity: 0.8;
+        }
+
+        .service-card {
+            background: var(--color-light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ---- Setas ---- */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--color-accent);
+            font-size: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: var(--color-accent);
+            color: white;
+            transform: scale(1.1) translateY(-50%);
+        }
+
+        .swiper-button-prev {
+            left: -50px;
+            /* ajusta posição */
+        }
+
+        .swiper-button-next {
+            right: -50px;
+        }
+
+        /* ---- Paginação ---- */
+        .swiper-pagination-bullet {
+            background: var(--color-accent);
+            opacity: 0.6;
+            transition: all 0.3s;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            transform: scale(1.3);
+        }
+
+
+        .modal-content {
+            background: var(--color-light);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 700px;
+            width: 90%;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content h2 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            font-size: 1rem;
+            color: var(--color-text);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--color-text);
+        }
+
+        .imgserv {
+            width: 300px;
+            margin: 15px;
+            border-radius: 7px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+            }
+
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+
+            .contact-content {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <img class="logo" src="logo-branco.png" alt="Equipe Designplan">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#benefits">Benefícios</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>O futuro do seu planejamento começa aqui</h1>
+            <p>
+                A Designplan oferece soluções inteligentes e técnicas avançadas para garantir
+                eficiência, controle e resultados sólidos para sua empresa.
+            </p>
+            <a href="#contato" class="btn">Fale Conosco</a>
+        </div>
+    </section>
+
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">O que é a Designplan?</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Com mais de 10 anos de experiência em unidades offshore, a Designplan oferece delineamentos
+                        técnicos completos, cronogramas, curvas e análises estratégicas para otimizar sua operação.</p>
+                    <p>Utilizando-se de ferramental técnico especializado, atuamos na gestão estratégica,
+                        organizacional, finanças e processos. De modo a estabelecer ações que darão embasamento a um
+                        plano de execução eficaz com o acompanhamento constante dos resultados.</p>
+                </div>
+                <div class="about-image">
+                    <img src="entrada.png" alt="Equipe Designplan">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits">
+        <div class="container">
+            <h2 class="section-title2">Benefícios de contratar a Designplan</h2>
+            <div class="benefits-list">
+                <div class="benefit-item"><i class="fas fa-bolt"></i>
+                    <h3>Agilidade no atendimento</h3>
+                </div>
+                <div class="benefit-item"><i class="fas fa-chart-line"></i>
+                    <h3>Otimização de processos</h3>
+                </div>
+                <div class="benefit-item"><i class="fas fa-users"></i>
+                    <h3>Equipe altamente capacitada</h3>
+                </div>
+                <div class="benefit-item"><i class="fas fa-dollar-sign"></i>
+                    <h3>Controle financeiro eficiente</h3>
+                </div>
+                <div class="benefit-item"><i class="fas fa-check-circle"></i>
+                    <h3>Compliance garantido</h3>
+                </div>
+                <div class="benefit-item"><i class="fas fa-laptop-code"></i>
+                    <h3>Recursos digitais modernos</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <!-- Carrossel -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <!-- Card 1 -->
+                    <div class="swiper-slide service-card">
+                        <h3>Delineamento de Pintura</h3>
+                        <p>Elaboração completa do delineamento técnico, análise do escopo e suporte contínuo no
+                            planejamento de atividades e resultados.</p>
+                        <button class="btn ver-mais" data-service="pintura">Ver mais</button>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="swiper-slide service-card">
+                        <h3>Gestão de Projetos</h3>
+                        <p>Controle estratégico de prazos, custos e qualidade em todas as fases do projeto, com
+                            metodologias consolidadas.</p>
+                        <button class="btn ver-mais" data-service="projetos">Ver mais</button>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="swiper-slide service-card">
+                        <h3>Análises Estratégicas</h3>
+                        <p>Curvas S, cronogramas, indicadores de desempenho e relatórios gerenciais para suportar
+                            decisões críticas.</p>
+                        <button class="btn ver-mais" data-service="analises">Ver mais</button>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="swiper-slide service-card">
+                        <h3>Especialistas em apresentações visuais de alto impacto</h3>
+                        <p>Nós fornecemos serviços de design e produção de slides de alto nível. Nossas apresentações
+                            são criadas para traduzir informações técnicas e complexas em narrativas visuais claras e
+                            impactantes.</p>
+                        <button class="btn ver-mais" data-service="apresentacao">Ver mais</button>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="swiper-slide service-card">
+                        <h3>Produção de Vídeo e Animação Industrial</h3>
+                        <p>Transformamos informações técnicas complexas em conteúdo visual claro e impactante.</p>
+                        <button class="btn ver-mais" data-service="video">Ver mais</button>
+                    </div>
+                </div>
+                <!-- Botões de navegação -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Paginação -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para Ver mais -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container contact-content">
+            <div class="contact-info">
+                <h3>Entre em Contato</h3>
+                <p><i class="fas fa-phone"></i> (22) 99823-9898</p>
+                <p><i class="fas fa-map-marker-alt"></i> Rua Benedito Lacerda, 59 - Centro - Macaé - RJ</p>
+                <p><i class="fas fa-envelope"></i> <a
+                        href="mailto:designplanmacae@gmail.com">designplanmacae@gmail.com</a></p>
+                <p><i class="fas fa-clock"></i> Seg. - Sex. 08:30 - 17:30</p>
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Envie-nos uma Mensagem</h3>
+                <form>
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit" class="btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Designplan. Todos os direitos reservados. CNPJ 57.563.537/0001-87</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Swiper JS para o carrossel -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Smooth scrolling para os links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Inicia o carrossel
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            loop: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 30,
+                stretch: 0,
+                depth: 150,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+            }
+        });
+
+
+        // Modal "Ver mais"
+        const modal = document.getElementById("modal");
+        const modalBody = document.getElementById("modal-body");
+        const closeBtn = document.querySelector(".close");
+
+        const servicos = {
+            pintura: {
+                titulo: "Delineamento de Pintura",
+                descricao: "A Designplan irá elaborar o delineamento técnico desde o início, examinando o escopo de cada nota e suas dificuldades, auxiliando no planejamento das atividades, estabelecendo um plano de execução e oferecendo um suporte durante as análises de resultados.",
+                imagem: "pintura.png"
+            },
+            projetos: {
+                titulo: "Gestão de Projetos",
+                descricao: "Gerenciamos seu projeto do início ao fim, garantindo controle de prazo, custos e qualidade, com metodologias consolidadas como MS Project e Primavera P6.",
+                imagem: "gestao.png"
+            },
+            analises: {
+                titulo: "Análises Estratégicas",
+                descricao: "Curvas S, cronogramas, indicadores de desempenho e relatórios gerenciais para suportar decisões críticas. Utilizamos ferramentas como Power BI e Excel para transformar dados em inteligência de negócios.",
+                imagem: "analise.png"
+            },
+            apresentacao: {
+                titulo: "Especialistas em apresentações visuais",
+                descricao: "Nós fornecemos serviços de design e produção de slides de alto nível. Nossas apresentações são criadas para traduzir informações técnicas e complexas em narrativas visuais claras e impactantes. Entendemos a urgência e a importância de reuniões estratégicas, apresentações para stakeholders e comunicações internas, por isso, nosso trabalho se concentra em garantir que sua mensagem seja transmitida com máxima clareza, profissionalismo e impacto visual. De relatórios de exploração a planos de segurança e pitchs para investidores, nosso objetivo é capacitar sua equipe para se comunicar com confiança e excelência.",
+                imagem: "apresentacao.png"
+            },
+            video: {
+                titulo: "Produção de Vídeo e Animação Industrial",
+                descricao: "Transformamos informações técnicas complexas em conteúdo visual claro e impactante. Nossos serviços de edição de vídeo e produção de animação são desenhados para a necessidade específica da área industrial, simplificando processos, aprimorando o treinamento e fortalecendo a comunicação de sua empresa.",
+                imagem: "video.png"
+            }
+        };
+
+        document.querySelectorAll(".ver-mais").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const service = btn.getAttribute("data-service");
+                modalBody.innerHTML = `
+                    <h2>${servicos[service].titulo}</h2>
+                    <img src="${servicos[service].imagem}" alt="${servicos[service].titulo}" style="width:100%; height:auto; border-radius:10px; margin:1rem 0;">
+                    <p>${servicos[service].descricao}</p>
+                `;
+                modal.style.display = "flex";
+            });
+        });
+
+        closeBtn.onclick = () => modal.style.display = "none";
+        window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; };
+    </script>
+</body>
+
+</html>
